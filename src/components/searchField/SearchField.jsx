@@ -8,15 +8,15 @@ function SearchField() {
   let [city, setCity] = useState();
   let [pre, setPre] = useState();
 
-  let[temperature,setTemperature] = useState();
-  let[humidity,setHumidity] = useState();
-  let[sunrise, setSunrise] = useState();
-  let[windspeed, setWindspeed] = useState();
+  let [temperature, setTemperature] = useState();
+  let [humidity, setHumidity] = useState();
+  let [sunrise, setSunrise] = useState();
+  let [windspeed, setWindspeed] = useState();
 
   windspeed
-  
 
-  function getWheatherData(cityName) {    
+
+  function getWheatherData(cityName) {
     const weatherApiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?key=2YB5NSGEUG234URKH5PGHAYVW`
 
     fetch(weatherApiUrl)
@@ -24,7 +24,7 @@ function SearchField() {
       .then(data => {
         console.log(data);
 
-        setCity(data.resolvedAddress) 
+        setCity(data.resolvedAddress)
         setTemperature(data.currentConditions.temp)
         setHumidity(data.currentConditions.humidity)
         setSunrise(data.currentConditions.sunrise)
@@ -39,14 +39,12 @@ function SearchField() {
         <input type="text" className="form-control me-4" placeholder="Informe uma cidade" id="cityName"
           onChange={(e) => setPre(e.target.value)} />
         <Button variant="primary" className="button"
-
           onClick={
             () => getWheatherData(pre)
           }
         >Pesquisar</Button>
       </div>
       <Button variant="success" className="button lg-4"
-
         onClick={
           () => {
             navigator.geolocation.getCurrentPosition(position => {
@@ -62,7 +60,7 @@ function SearchField() {
             fetch(geoApiUrl)
               .then(res => res.json())
               .then(data => {
-                getWheatherData(data.city);// + " - " + data.principalSubdivision)
+                getWheatherData(data.city);
               })
 
           }}
@@ -76,10 +74,10 @@ function SearchField() {
 
 
       <Card itemName={city}
-            itemTemperature={temperature}
-            itemHumidity={humidity}
-            itemSunrise={sunrise}
-            itemWindspeed={windspeed}/>
+        itemTemperature={temperature}
+        itemHumidity={humidity}
+        itemSunrise={sunrise}
+        itemWindspeed={windspeed} />
     </>
   );
 }
