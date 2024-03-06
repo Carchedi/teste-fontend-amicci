@@ -4,10 +4,10 @@ function Card(props) {
    return (
       <div className="card">
          <div className="card-header">
-            <h5 className="card-title">Cidade</h5>
+            <h5 className="card-title">{props.itemName ?? "Cidade"}</h5>
          </div>
          <div className="card-body">
-            <table class="table">
+            <table className="table">
 
                <tbody>
                   <tr>

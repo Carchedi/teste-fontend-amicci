@@ -13,10 +13,7 @@ function App() {
         <Logo />
         <span className='mt-5'>Aplicação voltada para obter os dados sobre o clima, buscando-os por uma API.</span>
         <SearchField />
-      </div>
-
-      <Card/>
- 
+      </div> 
     </>
   )
 }
