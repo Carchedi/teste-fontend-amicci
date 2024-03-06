@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from 'react-bootstrap/Button'; 
+import Button from 'react-bootstrap/Button';
 import Card from '../../components/cards/Card.jsx';
 
 function SearchField() {
@@ -9,17 +9,27 @@ function SearchField() {
   let [temp, setTemp] = useState();;
 
 
-  function getWheatherData(cityName){
-       setCity(cityName)
+  function getWheatherData(cityName) {
+    setCity(cityName)
+
+    
+    const weatherApiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?key=2YB5NSGEUG234URKH5PGHAYVW`
+
+    fetch(weatherApiUrl)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+
   }
 
   return (
     <>
       <div className="d-flex align-items-center mb-4 mt-5">
-        <input type="text" className="form-control me-4" placeholder="Informe uma cidade" id="cityName" 
-        onChange={(e) => setTemp(e.target.value)} />
+        <input type="text" className="form-control me-4" placeholder="Informe uma cidade" id="cityName"
+          onChange={(e) => setTemp(e.target.value)} />
         <Button variant="primary" className="button"
-        
+
           onClick={
             () => getWheatherData(temp)
           }
