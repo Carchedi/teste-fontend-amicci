@@ -6,19 +6,29 @@ function SearchField() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   let [city, setCity] = useState();
-  let [temp, setTemp] = useState();;
+  let [pre, setPre] = useState();
 
+  let[temperature,setTemperature] = useState();
+  let[humidity,setHumidity] = useState();
+  let[sunrise, setSunrise] = useState();
+  let[windspeed, setWindspeed] = useState();
 
-  function getWheatherData(cityName) {
-    setCity(cityName)
+  windspeed
+  
 
-    
+  function getWheatherData(cityName) {    
     const weatherApiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}?key=2YB5NSGEUG234URKH5PGHAYVW`
 
     fetch(weatherApiUrl)
       .then(res => res.json())
       .then(data => {
         console.log(data);
+
+        setCity(data.resolvedAddress) 
+        setTemperature(data.currentConditions.temp)
+        setHumidity(data.currentConditions.humidity)
+        setSunrise(data.currentConditions.sunrise)
+        setWindspeed(data.currentConditions.windspeed)
       })
 
   }
@@ -27,11 +37,11 @@ function SearchField() {
     <>
       <div className="d-flex align-items-center mb-4 mt-5">
         <input type="text" className="form-control me-4" placeholder="Informe uma cidade" id="cityName"
-          onChange={(e) => setTemp(e.target.value)} />
+          onChange={(e) => setPre(e.target.value)} />
         <Button variant="primary" className="button"
 
           onClick={
-            () => getWheatherData(temp)
+            () => getWheatherData(pre)
           }
         >Pesquisar</Button>
       </div>
@@ -65,7 +75,11 @@ function SearchField() {
       </Button>
 
 
-      <Card itemName={city} />
+      <Card itemName={city}
+            itemTemperature={temperature}
+            itemHumidity={humidity}
+            itemSunrise={sunrise}
+            itemWindspeed={windspeed}/>
     </>
   );
 }

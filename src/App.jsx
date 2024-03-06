@@ -3,7 +3,6 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from './components/logo/Logo.jsx'
 import SearchField from './components/searchField/SearchField.jsx';
-import Card from './components/cards/Card.jsx';
 
 function App() {
 
