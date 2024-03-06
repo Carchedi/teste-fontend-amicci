@@ -1,17 +1,20 @@
  
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Logo from './components/logo/Logo.jsx'
-import PersonalButton from './components/personalButton/PersonalButton.jsx'
+import Logo from './components/logo/Logo.jsx' 
+import SearchField from './components/searchField/SearchField.jsx';
 
 function App() { 
 
   return (
     <>
       <div>
-        <Logo />
-         <PersonalButton />
-      </div>
+        <Logo/>
+        <span className='mt-5'>Aplicação voltada para obter os dados sobre o clima, buscando-os por uma API.</span>
+        <SearchField />
+      </div> 
+
+      <i class="bi bi-4-square"></i>
     </>
   )
 }
