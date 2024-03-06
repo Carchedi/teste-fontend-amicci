@@ -5,6 +5,12 @@
   text-align: center;
 }
 
+.mainLogo{
+  width:100%; /* you can use % */
+  height: auto;
+}
+
+
 .logo {
   height: 6em;
   padding: 1.5em;
